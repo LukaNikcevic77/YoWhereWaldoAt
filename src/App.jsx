@@ -1,15 +1,31 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Home from './components/Home'
 import Nav from './components/Nav'
-
-
+import { GameStateContextProvider } from './contexts/GameStateContext'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import MakeUser from './components/MakeUser'
+import Game from './components/Game'
 function App() {
+  
 
   return (
     <>
+    <GameStateContextProvider>
     <Nav />
-       <Home />
-        </>
+    <BrowserRouter>
+    
+      <Routes>
+        <Route path="/makeUser" element={<MakeUser />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/game" element={<Game />}></Route>
+      </Routes>
+    
+    
+    </BrowserRouter>
+   
+    </GameStateContextProvider>
+    </>
   )
 }
 
