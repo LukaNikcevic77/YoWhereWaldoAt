@@ -17,8 +17,8 @@ function App() {
     
       <Routes>
         <Route path="/makeUser" element={<MakeUser />}></Route>
-        <Route path="/" element={<Home />}></Route>
         <Route path="/game" element={<Game />}></Route>
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     
     

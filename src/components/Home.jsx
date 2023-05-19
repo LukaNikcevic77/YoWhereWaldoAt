@@ -12,7 +12,7 @@ function Home() {
     const goRegister = () => {
         navigate("/makeUser", {replace: false});
     }
-    if(renderMode === 'home'){
+    
         return(
             <>
         
@@ -26,10 +26,7 @@ function Home() {
         </>
             
         )
-    }
-    else {
-
-    }
+   
     
 }
 

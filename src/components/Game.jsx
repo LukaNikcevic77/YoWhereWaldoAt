@@ -6,35 +6,31 @@ import statue from "../images/statue.jpg"
 import PopUpMenu from "./PopUpMenu";
 
 function Game(){
-        const {userName, currentlySelected, setCordinates} = useContext(GameStateContext);
+        const {userName, currentlySelected, setCordinates, hits, setHits, squareHit, setSquareHit} = useContext(GameStateContext);
 
         useEffect(() => {
                 console.log(userName);
         }, [])
-
-        const [hits, setHits] = useState({
-            volcano: {
-                isHit: false,
-                opacity: 100,
-            },
-            shield: {
-                isHit: false,
-                opacity: 100,
-            },
-            statue: {
-                isHit: false,
-                opacity: 100,
-            }
-
-        })
+        useEffect(() => {
+            console.log(squareHit)
+        }, [squareHit]);
+        
         const imageStyle = "object-cover h-full";
 
         useEffect(() => {
                 switch(currentlySelected) {
                     case "Volcano":
-                            setHits((hits) => ({...hits, [volcano]: {isHit: true, opacity: 25}}))
-                            
-                        break;
+                        if(squareHit === "Volcano"){
+                            let newHits = [...hits];
+                            newHits[0] = {
+                            isHit: false,
+                            color: 'rgba(0, 0, 0, 0.2)',
+                            url: volcano,
+                            name: "Volcano"
+                            }
+                            setHits([...newHits]);
+                        }
+                       
                     case "Shield":
 
                         break;
@@ -61,18 +57,8 @@ function Game(){
                         </PopUpMenu>
                         <img className="h-3/4 w-auto ml-44 -mt-20" src="https://wallpaperaccess.com/full/2687204.jpg" >
                         </img>
-                        <div className="bg-cyan-500 opacity-80 h-12 w-12 relative -top-36"></div>
-                        <div className="w-screen h-44  bg-green-700 mt-20 flex flex-row justify-center">
-                            <div className="h-44 w-44 bg-blue-300 mr-20 ml-64 overflow-hidden">
-                                <img className={`${imageStyle}`}  style={{display: hits.volcano.isHit ? "100" : "25"}} src={volcano} alt="" />
-                            </div>
-                            <div  className="h-44 w-44 bg-blue-300 mr-20">
-                            <img className={`${imageStyle}`} src={shield} alt="" />
-                            </div>
-                            <div  className="h-44 w-44 bg-blue-300 mr-20">
-                            <img className={`${imageStyle}`} src={statue} alt="" />
-                            </div>
-                        </div>
+                        <div className="bg-cyan-500 opacity-80 h-12 w-12 relative -top-36" onClick={() => setSquareHit("Volcano")}></div>
+                        
                     </div>
                 </>
             )
