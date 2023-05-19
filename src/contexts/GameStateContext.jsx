@@ -7,10 +7,11 @@ export const GameStateContext = createContext(null);
 
 export const GameStateContextProvider = (props) => {
 
-    const [renderMode, setRenderMode] = useState('home');
+    const [currentlySelected, setCurrentlySelected] = useState('');
     const [userName, setUserName] = useState('');
-
-    const contextValue = {renderMode, setRenderMode, userName, setUserName}
+    const [cordinates, setCordinates] = useState({});
+    
+    const contextValue = {currentlySelected, setCurrentlySelected, userName, setUserName, cordinates, setCordinates}
 
     return <GameStateContext.Provider value={contextValue}>
         {props.children};
