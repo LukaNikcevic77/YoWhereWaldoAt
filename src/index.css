@@ -5,4 +5,21 @@
 * {
   margin: 0px;
   padding: 0px;
+
+  
+}
+
+.volcano{
+      top: -16.8vw;
+      left: 16.7vw
+}
+
+.shield {
+  top: -3.2vw;
+  left: 11vw;
+}
+
+.statue {
+  top: -19.5vw;
+  left: -7.4vw;
 }
