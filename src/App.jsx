@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useContext } from 'react'
 import Home from './components/Home'
-import Nav from './components/Nav'
 import { GameStateContextProvider } from './contexts/GameStateContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MakeUser from './components/MakeUser'
