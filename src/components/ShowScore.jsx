@@ -1,11 +1,29 @@
 import React, { useState, useEffect, useContext} from "react";  
+import { useNavigate } from "react-router-dom";
 import { GameStateContext, GameStateContextProvider } from "../contexts/GameStateContext";
 import Game from "./Game";
-
+import { db } from "../config/firebase";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 
 function ShowScore(){
 
+    const navigate = useNavigate();
+    const seeLader = () => {
+        navigate("/Laderboards", {replace: true});
+        console.log(userName);
+    }
+
+
     const {userName, endTime, formatTime} = useContext(GameStateContext);
+    const scoresCollectionRef = collection(db, "scores");
+
+    const addScore = async () => {
+        await addDoc(scoresCollectionRef, {
+            Name: userName,
+            Score: formatTime(endTime)
+        });
+    }
+    
 
     return(
         <>
@@ -16,7 +34,7 @@ function ShowScore(){
             <p className="text-5xl text-black text-opacity-65 mb-24">{formatTime(endTime)}</p>
             <button className=
             "rounded-3xl bg-black text-4xl text-white p-10 hover:bg-white hover:text-black hover:border hover:border-5 hover:border-black"
-            >See Leaderboards!</button>
+            onClick={() => {addScore(), seeLader() }}>See Leaderboards!</button>
         </div>
         </>
     )

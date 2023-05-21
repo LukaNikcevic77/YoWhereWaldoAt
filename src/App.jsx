@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MakeUser from './components/MakeUser'
 import Game from './components/Game'
 import ShowScore from './components/ShowScore'
+import Laderboards from './components/Laderboards'
 function App() {
   
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/makeUser" element={<MakeUser />}></Route>
         <Route path="/game" element={<Game />}></Route>
         <Route path="/ShowScore" element={<ShowScore />}></Route>
+        <Route path="/Laderboards" element={<Laderboards />}></Route>
         <Route path="/" element={<Home />}></Route>
       </Routes>
     
