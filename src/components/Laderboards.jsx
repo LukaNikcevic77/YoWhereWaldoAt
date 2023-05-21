@@ -7,6 +7,7 @@ import { getDocs, collection } from "firebase/firestore";
 function Laderboards(){
 
     const [scoresList, setScoresList] = useState([]);
+    const [sortedList, setSortedList] = useState([]);
     let i = 0;
     const scoresCollectionRef = collection(db, "scores");
     
@@ -24,9 +25,9 @@ function Laderboards(){
                     ...doc.data()
                 }));
 
-                console.log(filteredData);
+               
                 setScoresList(filteredData);
-                const sortedList = scoresList.sort((a, b) => a.Score - b.Score);
+                
             } catch(err) {
                 console.error(err);
             }
@@ -44,7 +45,9 @@ function Laderboards(){
             <div className=" bg-red-600 grid  grid-cols-3 h-screen w-screen">
             {
                 
-                scoresList.map((item) => {
+                scoresList
+                .sort((a, b) => a.Score > b.Score ? 1 : -1)
+                .map((item) => {
                     i+= 1;
                     return (
                     <>

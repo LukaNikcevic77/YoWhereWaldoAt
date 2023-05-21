@@ -10,7 +10,7 @@ function ShowScore(){
     const navigate = useNavigate();
     const seeLader = () => {
         navigate("/Laderboards", {replace: true});
-        console.log(userName);
+        
     }
 
 
@@ -19,8 +19,8 @@ function ShowScore(){
 
     const addScore = async () => {
         await addDoc(scoresCollectionRef, {
-            Name: userName,
-            Score: formatTime(endTime)
+            Score: formatTime(endTime),
+            Name: userName
         });
     }
     

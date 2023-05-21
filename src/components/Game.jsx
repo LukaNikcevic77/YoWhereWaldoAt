@@ -10,17 +10,17 @@ function Game(){
         
 
         useEffect(() => {
-                console.log(userName);
+               
         }, [])
         useEffect(() => {
-            console.log(squareHit)
+          
         }, [squareHit]);
         
         const imageStyle = "object-cover h-full";
 
         useEffect(() => {
             
-            console.log(squareHit);
+          
                 switch(currentlySelected) {
                     case "Volcano":
                         if(squareHit === "Volcano"){
@@ -91,7 +91,7 @@ function Game(){
             
             const mouseX = event.clientX;
             const mouseY = event.clientY;
-            console.log(hits);
+           
 
             setCordinates({x: mouseX, y: mouseY});
             

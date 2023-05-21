@@ -13,7 +13,7 @@ function PopUpMenu(){
     const {setCurrentlySelected, cordinates, hits, setHits, flip} = useContext(GameStateContext)
     
     useEffect(() => {
-        console.log(cordinates)
+        
     },[cordinates])
 
     useEffect(() => {

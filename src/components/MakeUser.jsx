@@ -8,7 +8,7 @@ function MakeUser(){
     const navigate = useNavigate();
     const startGame = () => {
         navigate("/game", {replace: true});
-        console.log(userName);
+      
     }
     return (
         <>
