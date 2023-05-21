@@ -2,15 +2,26 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { GameStateContext } from "../contexts/GameStateContext";
 
+import { useNavigate } from "react-router-dom";
 
 function PopUpMenu(){      
     
-    
-    const {setCurrentlySelected, cordinates, hits, setHits} = useContext(GameStateContext)
+    const navigate = useNavigate();
+    const showcaseScore = () => {
+        navigate("/ShowScore", {replace: true});
+    }
+    const {setCurrentlySelected, cordinates, hits, setHits, flip} = useContext(GameStateContext)
     
     useEffect(() => {
         console.log(cordinates)
     },[cordinates])
+
+    useEffect(() => {
+        if(flip == true){
+            showcaseScore();
+        }
+       
+    }, [flip])
 
     if(cordinates.x == null || cordinates.y == null){
 
